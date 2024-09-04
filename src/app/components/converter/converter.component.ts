@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ExchangeRatesService } from '../../services/exchange-rates.service';
 import { FormsModule } from '@angular/forms';
 import { KeyValuePipe, NgFor } from '@angular/common';
+import { provideAngularSvgIcon, SvgIconComponent, SvgIconRegistryService } from 'angular-svg-icon';
 
 @Component({
   selector: 'app-converter',
   standalone: true,
-  imports: [FormsModule, NgFor, KeyValuePipe],
+  imports: [FormsModule, NgFor, KeyValuePipe, SvgIconComponent],
   templateUrl: './converter.component.html',
   styleUrl: './converter.component.css'
 })
@@ -43,5 +44,13 @@ export class ConverterComponent {
     const fromRate = this.exchangeRates.rates[this.fromCurrency];
     const toRate = this.exchangeRates.rates[this.toCurrency];
     this.amountFrom = +((this.amountTo * fromRate) / toRate).toFixed(2);
+  }
+
+  swapCurrencies() {
+    let tmp = this.fromCurrency;
+    this.fromCurrency = this.toCurrency;
+    this.toCurrency = tmp;
+
+    this.convertCurrencyFrom();
   }
 }

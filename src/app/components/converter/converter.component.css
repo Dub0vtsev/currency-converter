@@ -1,14 +1,17 @@
 .container {
+    display: flex;
     width: 100%;
     height: 100%;
+    justify-content: center;
 }
 
 form {
-    width: 100%;
+    width: 90%;
     height: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
 
 }
 
@@ -38,4 +41,15 @@ select {
     background-color: rgb(233, 223, 255);
     border-radius: 10px;
     outline: none;
+}
+
+svg {
+    color: black;
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+}
+
+svg:hover {
+    cursor: pointer;
 }
