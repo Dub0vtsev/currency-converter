@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { ExchangeRatesService } from '../../services/exchange-rates.service';
 import { FormsModule } from '@angular/forms';
 import { KeyValuePipe, NgFor } from '@angular/common';
-import { provideAngularSvgIcon, SvgIconComponent, SvgIconRegistryService } from 'angular-svg-icon';
 
 @Component({
   selector: 'app-converter',
   standalone: true,
-  imports: [FormsModule, NgFor, KeyValuePipe, SvgIconComponent],
+  imports: [FormsModule, NgFor, KeyValuePipe],
   templateUrl: './converter.component.html',
   styleUrl: './converter.component.css'
 })
