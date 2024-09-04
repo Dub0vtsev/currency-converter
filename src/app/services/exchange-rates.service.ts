@@ -6,15 +6,29 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ExchangeRatesService {
 
-  private apiKey = import.meta.env.API_KEY;
+  public exchangeRates: any;
+  public isDataFetched = false;
 
+  private apiKey = import.meta.env.NG_APP_API_KEY;
   private apiUrl = 'https://openexchangerates.org/api/latest.json'; // look https://docs.openexchangerates.org/reference/api-introduction
 
   constructor(private http: HttpClient) { }
 
-  getLatestExchangeRates() {
-    console.log(import.meta.env.API_KEY)
-    return this.http.get(`${this.apiUrl}?app_id=${this.apiKey}`);
-    // base curency = UAH (параметром краще, але в тз указано чітко)
+  getLatestExchangeRates(): Promise<any> {
+    if (!this.isDataFetched) {
+      return this.http.get(`${this.apiUrl}?app_id=${this.apiKey}`)
+        .toPromise()
+        .then(response => {
+          this.exchangeRates = response;
+          this.isDataFetched = true;
+          return this.exchangeRates;
+        });
+    } else {
+      return Promise.resolve(this.exchangeRates);
+    }
+  }
+
+  isFetched(): boolean {
+    return this.isDataFetched;
   }
 }

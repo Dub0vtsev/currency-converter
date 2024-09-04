@@ -9,18 +9,17 @@ import { ExchangeRatesService } from '../../services/exchange-rates.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  exchangeRates: any = {};
 
+  exchangeRates: any = {};
   constructor(private exchangeRatesService: ExchangeRatesService) { }
 
   ngOnInit(): void {
-    this.exchangeRatesService.getLatestExchangeRates().subscribe(
-      response => {
+    if (!this.exchangeRatesService.isFetched()) {
+      this.exchangeRatesService.getLatestExchangeRates().then(response => {
         this.exchangeRates = response;
-      },
-      error => {
-        console.error('Error fetching exchange rates:', error);
-      }
-    );
+      });
+    } else {
+      this.exchangeRates = this.exchangeRatesService.exchangeRates;
+    }
   }
 }

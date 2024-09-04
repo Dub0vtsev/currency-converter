@@ -1,4 +1,10 @@
+<!-- 
+    рахую кросс курс, бо на безкоштовній версії API
+    базовою валютою є тільки USD
+ -->
 <header>
-    <h1>Currency Converter</h1>
-    <p>1 USD = {{ exchangeRates.rates.UAH }} UAH</p>
+    <h1>Header</h1>
+    <p>1 USD = {{ this.exchangeRates.rates["UAH"].toFixed(4) }} UAH</p>
+    <p>1 EUR = {{ (this.exchangeRates.rates["UAH"] / this.exchangeRates.rates["EUR"]).toFixed(4) }} UAH</p>
+    <p>1 GBP = {{ (this.exchangeRates.rates["UAH"] / this.exchangeRates.rates["GBP"]).toFixed(4) }} UAH</p>
 </header>
