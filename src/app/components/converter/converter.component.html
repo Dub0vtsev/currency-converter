@@ -1,23 +1,27 @@
-<div>
-    <h2>Currency Converter</h2>
+<div class="container">
     <form>
-        <label>Amount:</label>
-        <input type="number" [(ngModel)]="amountFrom" (ngModelChange)="convertCurrencyFrom()" name="amountFrom">
-        <select [(ngModel)]="fromCurrency" (ngModelChange)="convertCurrencyFrom()" name="from">
-            <ng-container *ngFor="let currency of this.exchangeRates?.rates | keyvalue">
-                <option [value]="currency.key">
-                    {{ currency.key }}
-                </option>
-            </ng-container>
-        </select>
-        <label>to</label>
-        <input type="number" [(ngModel)]="amountTo" (ngModelChange)="convertCurrencyTo()" name="amountTo">
-        <select [(ngModel)]="toCurrency" (ngModelChange)="convertCurrencyTo()" name="to">
-            <ng-container *ngFor="let currency of this.exchangeRates?.rates | keyvalue">
-                <option [value]="currency.key">
-                    {{ currency.key }}
-                </option>
-            </ng-container>
-        </select>
+        <div><label>Trade:</label>
+            <input type="number" [(ngModel)]="amountFrom" (ngModelChange)="convertCurrencyFrom()" name="amountFrom">
+            <select [(ngModel)]="fromCurrency" (ngModelChange)="convertCurrencyFrom()" name="from">
+                <ng-container *ngFor="let currency of this.exchangeRates?.rates | keyvalue">
+                    <option [value]="currency.key">
+                        {{ currency.key }}
+                    </option>
+                </ng-container>
+            </select>
+        </div>
+
+        <div><label>For:</label>
+            <input type="number" [(ngModel)]="amountTo" (ngModelChange)="convertCurrencyTo()" name="amountTo">
+            <select [(ngModel)]="toCurrency" (ngModelChange)="convertCurrencyTo()" name="to">
+                <ng-container *ngFor="let currency of this.exchangeRates?.rates | keyvalue">
+                    <option [value]="currency.key">
+                        {{ currency.key }}
+                    </option>
+                </ng-container>
+            </select>
+
+        </div>
+
     </form>
 </div>

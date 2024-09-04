@@ -1,0 +1,41 @@
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    font-size: 0.75rem;
+    display: block;
+}
+
+input[type=number] {
+    padding: 1rem;
+    border: none;
+    background-color: rgb(233, 223, 255);
+    border-radius: 10px;
+    margin-right: 0.5rem;
+    outline: none;
+    font-size: 1rem;
+}
+
+select {
+    padding: 1rem;
+    font-size: 1rem;
+    border: none;
+    background-color: rgb(233, 223, 255);
+    border-radius: 10px;
+    outline: none;
+}
